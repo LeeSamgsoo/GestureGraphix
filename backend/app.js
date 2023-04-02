@@ -31,7 +31,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -47,9 +47,12 @@ app.get('/vue', (req, res) => {
 });
 
 //서버 시작
-app.listen(3000, () => {
-  console.log('Server is running on port 3000.');
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}.`);
 });
+
 
 module.exports = app;
 
