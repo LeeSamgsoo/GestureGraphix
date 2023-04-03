@@ -42,16 +42,19 @@ app.use(function(err, req, res) {
 });
 
 // Vue 애플리케이션의 라우팅 처리를 위한 핸들러 등록
-app.get('/vue', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'frontEnd', 'web', 'dist', 'index.html'));
-});
+app.use(express.static(path.join(__dirname, '..', 'frontEnd', 'web', 'dist')));
+
 
 //서버 시작
-const port = process.env.PORT || 3000;
+const http = require('http');
+const port = process.env.PORT || 80;
 
-app.listen(port, () => {
+const server = http.createServer(app);
+
+server.listen(port, () => {
   console.log(`Server is running on port ${port}.`);
 });
+
 
 
 module.exports = app;
