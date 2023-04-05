@@ -42,12 +42,12 @@ app.use(function(err, req, res) {
 });
 
 // Vue 애플리케이션의 라우팅 처리를 위한 핸들러 등록
-app.use(express.static(path.join(__dirname, '..', 'frontEnd', 'web', 'dist')));
+app.use(express.static(path.join(__dirname, '..', 'frontEnd', 'web', 'dist', 'index.html')));
 
 
 //서버 시작
 const http = require('http');
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 
 const server = http.createServer(app);
 
